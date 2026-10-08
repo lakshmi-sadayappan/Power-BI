@@ -1,73 +1,48 @@
-# Project - Sales Data
+# Project 2: Sales Data Analysis Dashboard (Power BI)
 
-## Project Overview
+Interactive Power BI report analysing 4 years of retail sales (Jan 2020 – Dec 2023) across Indian cities, 30 products, 50 customers and 5 promotion campaigns.
 
-This report contains a Power BI dashboard focused on sales performance, product trends, promotions, and customer order details.
+![Sales Trend Dashboard](images/sales-trend.png)
 
-## Key Dashboard Sections
+## Business Questions
+- How have sales trended over time, and when did they peak?
+- Which products drive sales, profit and volume, and which lag?
+- Which promotions give the deepest discounts?
+- How does one date range compare against another?
 
-### Sales Trend
-- Visualizes sales performance over multiple periods from 2020 through 2024.
-- Includes comparisons of Profit vs Net Sales.
+## Dataset
+`Store_Data.xlsx` – star-schema style model:
+| Table | Content |
+|---|---|
+| Sheet3 (fact) | 3,510 transactions: date, customer, promotion, product, units sold |
+| Dim Customers | 50 customers with city and state |
+| Dim Product | 30 products across 8 product lines, with unit price (INR) |
+| Dim Promotion | 5 campaigns with ad type, coupon code, price-reduction type |
 
-### Promotion Discount Analysis
-- Average discount by promotion category:
-  - Weekend Flash Sale: 23K
-  - Clearance Sale: 18K
-  - Summer Sale: 7K
-  - New Year Special: 3K
-  - Festive Diwali: 0K
+Total Sales, Discount and Net Sales are calculated in Power BI (price × units, discount %, net of discount).
 
-### Sales by City
-- City-level sales shown for Bhopal, Kanpur, Indore, Lucknow, Mumbai, Pune, Patna, Jaipur, Nagpur, Delhi, Chennai, Kolkata, Visakhapatnam, and Bangalore.
-- The dashboard also reports the total number of orders, approximately 3.51K.
+## Dashboard Pages
+1. **Sales Trend** – daily sales line (2020–2024), sales by city map, number of orders, average discount by promotion, profit vs net sales.
+2. **Product Performance** – top and bottom 5 products by sales, quantity and profit.
+3. **Period Comparison** – Total Sales, Profit and Units Sold for two independent date filters.
+4. **Transaction Detail** – drill-through table with slicers for date, customer, product and promotion.
 
-### Product Performance
-- Top 5 products by sales:
-  - Apple iPhone 14: 21.4M
-  - Apple MacBook Air: 19.6M
-  - Sony Bravia 55" TV: 19.4M
-  - Samsung Galaxy S21: 15.3M
-  - HP Pavilion Laptop: 14.4M
-- Bottom 5 products by sales:
-  - Tupperware Lunch Box: 0.26M
-  - L'Oréal Shampoo: 0.17M
-  - Nivea Body Lotion: 0.08M
-  - Dove Soap Pack: 0.08M
-  - Colgate Toothpaste: 0.02M
-- Top 5 products by quantity sold:
-  - Apple iPhone 14: 281
-  - Raymond Suit: 274
-  - Fossil Smartwatch: 269
-  - Zara Casual Shirt: 269
-  - IFB Microwave Oven: 259
-- Top 5 products by profit:
-  - Apple iPhone 14: 2.14M
-  - Apple MacBook Air: 1.96M
-  - Sony Bravia 55" TV: 1.94M
-  - Samsung Galaxy S21: 1.53M
-  - HP Pavilion Laptop: 1.44M
-- Bottom 5 products by quantity:
-  - Nivea Body Lotion: 219
-  - Tupperware Lunch Box: 215
-  - Milton Thermos Flask: 214
-  - FabIndia Kurta: 210
-  - Borosil Glass Set: 203
-- Bottom 5 products by profit:
-  - Tupperware Lunch Box: 26K
-  - L'Oréal Shampoo: 17K
-  - Nivea Body Lotion: 8K
-  - Dove Soap Pack: 8K
-  - Colgate Toothpaste: 2K
+## Key Insights
+- **Overall:** 122M total sales, 12.2M profit and 7.1K units sold across 3.51K orders.
+- **Product concentration:** the top 5 products (all high-ticket electronics) generate about 90M, roughly 74% of total sales.
+- **Apple iPhone 14** leads on sales (21.4M), profit (2.14M) and units sold (281).
+- **Low performers:** the bottom 5 products (personal care and kitchenware) each sell under 0.3M; Colgate Toothpaste is lowest at 0.02M.
+- **Promotions:** Weekend Flash Sale (23K) and Clearance Sale (18K) carry the highest average discounts; Festive Diwali is close to zero.
+- **Peak sales:** the highest single-day sales reach about 0.65M (late 2022), with recurring spikes of 0.4–0.55M each year.
+- **Profit** scales linearly with net sales (about a 10% margin), so profit varies only with sales volume in this dataset.
 
-### Summary Metrics
-- Total Sales: 74M and 122M shown for two measures.
-- Total Profit: 7.4M and 12.2M shown for two measures.
-- Total Quantity Sold: 4.3K and 7.1K shown for two measures.
+## Tools
+Power BI Desktop · DAX · Power Query · Excel
 
-### Data Table Sample
-- Includes order-level fields such as CustomerID, Date, Discount, Discount Percentage, Net Sales, Price Per Unit, Product ID, Profit, Promotion ID, Total Sales, and Units Sold.
+## Files
+- `Sales_Data_Report.pbix` – Power BI report
+- `Sales_Data_Report.pdf` – exported dashboard
+- `Store_Data.xlsx` – source data
 
-## Notes
-- The report is built in Power BI Desktop.
-- The dashboard uses date filters across 2020 to 2024 and includes two date filter ranges.
+## Note
+Sample/practice dataset, built to demonstrate data modelling, DAX and dashboard design.
